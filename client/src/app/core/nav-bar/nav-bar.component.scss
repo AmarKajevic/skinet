@@ -12,3 +12,16 @@
 header{
   background-color: #efefed;
 }
+a
+{
+  text-decoration: none;
+  color: #343a40;
+
+  &.active{
+    color:orange
+  }
+
+}
+.logo{
+  cursor: pointer;
+}
