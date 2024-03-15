@@ -19,18 +19,29 @@ namespace Infrastructure.Data
 
         public async Task<bool> DeleteBasketAsync(string basketId)
         {
+            if (basketId == null)
+            {
+                
+                return false;
+            }
             return await _database.KeyDeleteAsync(basketId);
         }
 
         public async Task<CustomerBasket> GetBasketAsync(string basketId)
         {
+            if (string.IsNullOrEmpty(basketId))
+            {
+                return null;
+            }
             var data = await _database.StringGetAsync(basketId);
             return data.IsNullOrEmpty ? null : JsonSerializer.Deserialize<CustomerBasket>(data);
         }
 
         public async Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket)
         {
-            var created = await _database.StringSetAsync(basket.Id, JsonSerializer.Serialize(basket), TimeSpan.FromDays(30));
+            var created = await _database.StringSetAsync(basket.Id, 
+            JsonSerializer.Serialize(basket), TimeSpan.FromDays(30));
+            
             if(!created) return null;
 
             return await GetBasketAsync(basket.Id);
