@@ -26,6 +26,7 @@ export class DeliveryComponent implements OnInit {
     this.basketService.setShippingPrice(deliveryMethod);
 
   }
+  
 
 
 }
