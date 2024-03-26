@@ -12,7 +12,7 @@ export interface BasketItem{
 }
 
 export interface Basket{
-    id:string;
+    id: string;
     items: BasketItem[];
     clientSecret?: string;
     paymentIntentId?: string;
@@ -21,7 +21,7 @@ export interface Basket{
 }
 
 export class Basket implements Basket{
-    id= cuid();
+    id = cuid();
     items: BasketItem[] = [];
     shippingPrice = 0;
 }
