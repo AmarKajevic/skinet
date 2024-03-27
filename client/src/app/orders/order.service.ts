@@ -8,13 +8,11 @@ import { environment } from 'src/environments/environment';
 })
 export class OrderService {
   baseUrl = environment.apiUrl;
-
-  constructor(private http:HttpClient) { }
-
-  getOrdersForUser(){
-    return this.http.get<Order[]>(this.baseUrl + 'orders');
+  constructor(private http: HttpClient) { }
+  getOrdersForUser() {
+  return this.http.get<Order[]>(this.baseUrl + 'orders');
   }
-  getOrderDetailed(id :number){
-    return this.http.get<Order>(this.baseUrl + 'orders/' +id);
+  getOrderDetailed(id: number) {
+  return this.http.get<Order>(this.baseUrl + 'orders/' + id);
   }
 }

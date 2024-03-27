@@ -52,22 +52,19 @@ constructor(private shopService :ShopService, private activatedRoute:ActivatedRo
   decrementQunatity(){
     this.quantity--;
   }
-  updateBasket(){
-    if(this.product){
-      if(this.quantity > this.quantityInBasket){
-        const itemsToAdd = this.quantity -this.quantityInBasket;
-        this.quantityInBasket += itemsToAdd;
-        this.basketService.addItemToBasket(this.product, itemsToAdd);
-      } else 
-      {
-        const itemsToRemove = this.quantityInBasket - this.quantity;
-        this.quantityInBasket -= itemsToRemove;
-        this.basketService.removeItemFromBasket(this.product.id, itemsToRemove);
+  updateBasket() {
+    if (this.product) {
+      if (this.quantity > this.quantityInBasket) {
+      const itemsToAdd = this.quantity - this.quantityInBasket;
+      this.quantityInBasket += itemsToAdd;
+      this.basketService.addItemToBasket(this.product, itemsToAdd);
+    } else {
+      const itemsToRemove = this.quantityInBasket - this.quantity;
+      this.quantityInBasket -= itemsToRemove;
+      this.basketService.removeItemFromBasket(this.product.id, itemsToRemove);
       }
+     }
     }
-    
-    
-  }
 
   get buttonText(){
     return this.quantityInBasket === 0 ? 'Add to basket' :'Update basket'

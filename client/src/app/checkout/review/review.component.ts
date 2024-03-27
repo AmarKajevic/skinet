@@ -11,11 +11,12 @@ import { BasketService } from 'src/app/basket/basket.service';
 export class ReviewComponent {
 
   @Input() appStepper?: CdkStepper;
-  constructor(private basketService : BasketService, private toastr: ToastrService) { }
 
-  createPaymentIntent(){
+  constructor(private basketService: BasketService, private toastr: ToastrService) {}
+
+  createPaymentIntent() {
     this.basketService.createPaymentIntent().subscribe({
-      next:  () => {
+      next: () => {
         this.appStepper?.next();
       },
       error: error => this.toastr.error(error.message)
